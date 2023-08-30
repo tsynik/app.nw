@@ -1,7 +1,7 @@
 {
   "main": "frame.html",
   "name": "Lampa",
-  "description": "Chromium Lampa client with AC-3 / DTS support",
+  "description": "Lampa App for nw.js",
   "version": "1.9.5",
   "node-remote": "*://*/*",
   "window": {
@@ -18,5 +18,5 @@
   "icons": {
     "256": "frame/icon.png"
   },
-  "chromium-args": "--disable-web-security --disable-site-isolation-trials --disable-features=BlockInsecurePrivateNetworkRequests,AsyncDns,UseDnsHttpsSvcbAlpn --enable-experimental-web-platform-features --enable-inband-text-tracks --enable-logging=stderr --enable-webassembly --enable-webgl --ignore-gpu-blacklist"
+  "chromium-args": "--disable-web-security --disable-site-isolation-trials --disable-features=BlockInsecurePrivateNetworkRequests,AsyncDns,UseDnsHttpsSvcbAlpn --enable-experimental-web-platform-features --enable-logging=stderr --enable-webgl --ignore-gpu-blacklist"
 }
