@@ -2,7 +2,7 @@
   "main": "frame.html",
   "name": "Lampa",
   "description": "Lampa App for nw.js",
-  "version": "1.9.5",
+  "version": "2.1.0",
   "node-remote": "*://*/*",
   "window": {
     "icon": "frame/icon.png",
@@ -18,5 +18,5 @@
   "icons": {
     "256": "frame/icon.png"
   },
-  "chromium-args": "--disable-web-security --disable-site-isolation-trials --disable-features=BlockInsecurePrivateNetworkRequests,AsyncDns,UseDnsHttpsSvcbAlpn --enable-experimental-web-platform-features --enable-logging=stderr --enable-webgl --ignore-gpu-blacklist"
+  "chromium-args": "--disable-web-security --disable-site-isolation-trials --disable-features=BlockInsecurePrivateNetworkRequests,AsyncDns,UseDnsHttpsSvcbAlpn --enable-experimental-web-platform-features --enable-inband-text-tracks --enable-logging=stderr --enable-webgl --ignore-gpu-blacklist"
 }

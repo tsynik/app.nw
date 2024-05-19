@@ -113,30 +113,6 @@
         <script>
             process.on("uncaughtException", function (err) {});
 
-            if (MediaSource.isTypeSupported('audio/mp4; codecs="ac-3"')) {
-                console.log("*** Dolby AC-3 audio is supported!");
-            }
-            if (MediaSource.isTypeSupported('audio/mp4; codecs="ec-3"')) {
-                console.log("*** Dolby Enhanced AC-3 audio is supported!");
-            }
-            if (MediaSource.isTypeSupported('audio/mp4; codecs="dts-"')) {
-                console.log("*** BL for DTS layered audio is supported!");
-            }
-            if (MediaSource.isTypeSupported('audio/mp4; codecs="dts+"')) {
-                console.log("*** EL for DTS layered audio is supported!");
-            }
-            if (MediaSource.isTypeSupported('audio/mp4; codecs="dtse"')) {
-                console.log("*** DTS LBR is supported!");
-            }
-            if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsc"')) {
-                console.log("*** DTS Coherent Acoustics audio is supported!");
-            }
-            if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsh"')) {
-                console.log("*** DTS-HD is supported!");
-            }
-            if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsl"')) {
-                console.log("*** DTS-HD Master Audio is supported!");
-            }
             if (MediaSource.isTypeSupported('video/mp4; codecs="dvav"')) {
                 console.log("*** AVC-based Dolby Vision is supported!");
             }
@@ -318,9 +294,10 @@
                 modifiers: "shift+cmd",
                 click: function () {
                     let info = "";
+                    info += "Chromium " + process.versions['chromium'] + "\n\n";
                     let localLampa = url === "index.html";
                     if (localLampa) {
-                        info = "Bundled Lampa: true\n\nLocal Storage:\n\n";
+                        info += "Bundled Lampa: true\n\nLocal Storage:\n\n";
                         let key = "";
                         for (var i = 0; i < localStorage.length; i++) {
                             key = localStorage.key(i);
@@ -353,9 +330,41 @@
                                 JSON.stringify(sessionStorage, null, 2) + "\n";
                         }
                     } else {
-                        info = "Bundled Lampa: false\n\n" + url + "\n\n\n";
+                        info += "Bundled Lampa: false\n\n" + url + "\n\n";
                     }
-
+										info += "Extended audio support";
+										if (MediaSource.isTypeSupported('audio/mp4; codecs="ac-3"')) {
+												info += " • Dolby Digital AC-3";
+										}
+										if (MediaSource.isTypeSupported('audio/mp4; codecs="ec-3"')) {
+												info += " • Enhanced AC-3";
+										}
+										if (MediaSource.isTypeSupported('audio/mp4; codecs="ac-4"')) {
+												info += " • AC-4";
+										}
+										if (MediaSource.isTypeSupported('audio/mp4; codecs="dts-"')) {
+												info += " • DTS BL";
+										}
+										if (MediaSource.isTypeSupported('audio/mp4; codecs="dts+"')) {
+												info += " • DTS EL";
+										}
+										if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsc"')) {
+												info += " • DTS Coherent Acoustics";
+										}
+										if (MediaSource.isTypeSupported('audio/mp4; codecs="dtse"')) {
+												info += " • DTS E";
+										}
+										if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsx"')) {
+												info += " • DTS X";
+										}
+										if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsh"')) {
+												info += " • DTS-HD";
+										}
+										if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsl"')) {
+												info += " • DTS-HD Master Audio";
+										}
+										info += "\n";
+            						
                     alert(info);
                     const dlg = nw.Window.get();
                     let dlgTitle = document.getElementById("content");
@@ -383,7 +392,7 @@
             var submenu = new nw.Menu();
             if (!isMac) {
                 submenu.append(lu);
-                if (devMode) submenu.append(nfo);
+                /*if (devMode)*/ submenu.append(nfo);
                 if (devMode) submenu.append(dt);
                 mb.append(
                     new nw.MenuItem({
@@ -396,7 +405,7 @@
                 submenu = mb.items[0].submenu;
                 submenu.insert(sp, 1);
                 submenu.insert(lu, 2);
-                if (devMode) submenu.insert(nfo, 3);
+                /*if (devMode)*/ submenu.insert(nfo, 3);
                 if (devMode) submenu.insert(dt, 4);
             }
             // apply menu
