@@ -332,38 +332,38 @@
                     } else {
                         info += "Bundled Lampa: false\n\n" + url + "\n\n";
                     }
-										info += "Extended audio support";
-										if (MediaSource.isTypeSupported('audio/mp4; codecs="ac-3"')) {
-												info += " • Dolby Digital AC-3";
-										}
-										if (MediaSource.isTypeSupported('audio/mp4; codecs="ec-3"')) {
-												info += " • Enhanced AC-3";
-										}
-										if (MediaSource.isTypeSupported('audio/mp4; codecs="ac-4"')) {
-												info += " • AC-4";
-										}
-										if (MediaSource.isTypeSupported('audio/mp4; codecs="dts-"')) {
-												info += " • DTS BL";
-										}
-										if (MediaSource.isTypeSupported('audio/mp4; codecs="dts+"')) {
-												info += " • DTS EL";
-										}
-										if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsc"')) {
-												info += " • DTS Coherent Acoustics";
-										}
-										if (MediaSource.isTypeSupported('audio/mp4; codecs="dtse"')) {
-												info += " • DTS E";
-										}
-										if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsx"')) {
-												info += " • DTS X";
-										}
-										if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsh"')) {
-												info += " • DTS-HD";
-										}
-										if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsl"')) {
-												info += " • DTS-HD Master Audio";
-										}
-										info += "\n";
+                    info += "Extended audio support";
+                    if (MediaSource.isTypeSupported('audio/mp4; codecs="ac-3"')) {
+                            info += " • Dolby Digital AC-3";
+                    }
+                    if (MediaSource.isTypeSupported('audio/mp4; codecs="ec-3"')) {
+                            info += " • Enhanced AC-3";
+                    }
+                    if (MediaSource.isTypeSupported('audio/mp4; codecs="ac-4"')) {
+                            info += " • AC-4";
+                    }
+                    if (MediaSource.isTypeSupported('audio/mp4; codecs="dts-"')) {
+                            info += " • DTS BL";
+                    }
+                    if (MediaSource.isTypeSupported('audio/mp4; codecs="dts+"')) {
+                            info += " • DTS EL";
+                    }
+                    if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsc"')) {
+                            info += " • DTS Coherent Acoustics";
+                    }
+                    if (MediaSource.isTypeSupported('audio/mp4; codecs="dtse"')) {
+                            info += " • DTS E";
+                    }
+                    if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsx"')) {
+                            info += " • DTS X";
+                    }
+                    if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsh"')) {
+                            info += " • DTS-HD";
+                    }
+                    if (MediaSource.isTypeSupported('audio/mp4; codecs="dtsl"')) {
+                            info += " • DTS-HD Master Audio";
+                    }
+                    info += "\n";
             						
                     alert(info);
                     const dlg = nw.Window.get();
@@ -420,9 +420,11 @@
                 .addEventListener("click", function () {
                     if (maximized) {
                         win.unmaximize();
+                        if (!isMac) win.menu = mb; // show
                         maximized = false;
                     } else {
                         win.maximize();
+                        if (!isMac) win.menu = null; // hide
                     }
                 });
 
