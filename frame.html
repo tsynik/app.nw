@@ -415,16 +415,22 @@
                 maximized = true;
             });
 
+            win.on("enter-fullscreen", function () {
+                if (!isMac) win.menu = null; // hide menu
+            });
+
+            win.on("leave-fullscreen", function () {
+                if (!isMac) win.menu = mb; // show menu
+            });
+
             document
                 .getElementById("wn-ex")
                 .addEventListener("click", function () {
                     if (maximized) {
-                        win.unmaximize();
-                        if (!isMac) win.menu = mb; // show
+                        win.unmaximize();                        
                         maximized = false;
                     } else {
                         win.maximize();
-                        if (!isMac) win.menu = null; // hide
                     }
                 });
 
